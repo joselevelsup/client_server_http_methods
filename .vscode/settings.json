@@ -1,0 +1,10 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "test",
+      "database": "/home/skippy/Documents/work/tkh/cohort-2025/sql-exercises/with-sqlite/test.sqlite"
+    }
+  ]
+}
