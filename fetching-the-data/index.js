@@ -9,3 +9,5 @@ async function fetchRandomCatImage(){
     console.log(err);
   }
 }
+
+fetchRandomCatImage();

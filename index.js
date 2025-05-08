@@ -56,27 +56,66 @@ import axios from "axios";
 // })()
 
 
-async function getData() {
-  try {
-    const response = await axios.get("https://pokeapi.co/api/v2/ability/?limit=20&offset=20")
+// async function getData() {
+//   try {
+//     const response = await axios.get("https://pokeapi.co/api/v2/ability/?limit=20&offset=20")
 
 
-    if(response.status !== 200){
-      throw new Error("Something went wrong with the axios call");
-    }
+//     if(response.status !== 200){
+//       throw new Error("Something went wrong with the axios call");
+//     }
 
-    console.log(response.data);
-    let data = response.data;
-    console.log(data.results);
+//     console.log(response.data);
+//     let data = response.data;
+//     console.log(data.results);
 
-    //Print every ability name from the PokeAPI data
-    data.results.forEach((ability) => {
-      console.log(ability.name);
-    })
+//     //Print every ability name from the PokeAPI data
+//     data.results.forEach((ability) => {
+//       console.log(ability.name);
+//     })
     
-  } catch(err){
-    console.log(err);
+//   } catch(err){
+//     console.log(err);
+//   }
+// }
+
+// getData().then(() => {}).catch(() => {}) 
+
+let config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://pokeapi.co/api/v2/ability/?limit=20&offset=20',
+  headers: { }
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error); 
+});
+
+async function fetchData() {
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: 'https://pokeapi.co/api/v2/ability/?limit=20&offset=20',
+    headers: { }
+  };
+
+  try {
+    const resp = await axios.request(config)
+
+    console.log(resp);
+  } catch(error){
+    console.log(error);
   }
+
 }
 
-getData().then(() => {}).catch(() => {}) 
+fetchData()
+
+// (async function(){
+//   await fetchData();
+// })()
